@@ -65,6 +65,11 @@ const s3Bucket = process.env.S3_BUCKET;
         }
         console.log('File:: ',media_file_uri,' type:: ',filetype, 'language_code:: ', language_code);
 
+        // Peter 20191105 - if file name contains chinese use chinese transcribe
+        if(language_code.indexOf("chinese") > -1) {
+            language_code = "zh-CN";
+        }
+
         let params = {
             LanguageCode: language_code,
             Media: {
